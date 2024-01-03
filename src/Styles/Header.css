@@ -2,11 +2,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 40px;
 }
 
-h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: black;
+
+.title {
+    color: white;
+    font-size: 50px;
+}
+
+.left__span {
+    color: rgb(121, 0, 235);
+    text-shadow: 0 0 30px purple;
+}
+.subHeader {
+    color: grey;
+    font-size: 35px;
+}
+
+.sub__span {
+    color: rgb(194, 16, 16);
+    text-shadow: 0 0 30px rgb(226, 0, 57);
 }

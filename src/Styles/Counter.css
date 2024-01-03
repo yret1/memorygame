@@ -1,5 +1,21 @@
 .scoreBox{
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 30px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.scoreCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 20px;
+}
+
+.bestS {
+    color: rgb(255, 230, 0);
+    font-size: 40px;
 }

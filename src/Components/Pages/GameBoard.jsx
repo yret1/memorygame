@@ -12,7 +12,7 @@ const GameBoard = (props) => {
     const [data, setData] = useState(null);
     const [gameover, setGameover] = useState(false);
 
-    const [flippedCards, setFlippedCards] = useState([]);
+    const [flipped, setFlipped] = useState(false);
   
     const [cards, setCards] = useState([]);
     const [clicked, setClicked] = useState([]);
@@ -57,13 +57,19 @@ const GameBoard = (props) => {
         if (clicked.includes(id)) {
             setGameover(true);
         } else {
+            setFlipped(true);
             setScore((prevScore) => prevScore + 1);
             setClicked((prevClicked) => [...prevClicked, id])
-            shuffleCards(cards)
+            const updatedCards = cards.map((card) => ({ ...card, flipped: true }));
+            setCards(updatedCards);
 
             console.log(clicked)
         }
     };
+
+    useEffect(() => {
+        shuffleCards(cards)
+    },[cards])
 
 
 
@@ -77,6 +83,10 @@ const GameBoard = (props) => {
             [arr[currentPos], arr[randomIndex]] = [
                 arr[randomIndex], arr[currentPos]];
         }
+
+        setTimeout(() => {
+            setFlipped(false)
+        }, 800)
         return arr;
     }
 
@@ -86,7 +96,7 @@ const GameBoard = (props) => {
         <div className="gameBoard">
             {cards.map((item) => {
                 return (
-                   <Card cardimg={item.url} key={item.id} cardId={item.id} id={item.id} handleClick={handleClick} />
+                   <Card cardimg={item.url} key={item.id} cardId={item.id} id={item.id} flipped={flipped} handleClick={handleClick} />
                 )
             })}
         </div>
